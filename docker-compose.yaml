@@ -1,0 +1,9 @@
+version: '3.9'
+services:
+  webpage:
+    container_name: wednesday-os-website
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "420:80"
