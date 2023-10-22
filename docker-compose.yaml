@@ -41,10 +41,10 @@ services:
       dockerfile: Dockerfile
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.frontend.rule=Host(`instabot.wednesdayos.com`)"
-      - "traefik.http.routers.frontend.entrypoints=websecure"
-      - "traefik.http.routers.frontend.tls.certresolver=myresolver"
-      - "traefik.http.routers.frontend.tls=true"
+      - "traefik.http.routers.instabot.rule=Host(`instabot.wednesdayos.com`)"
+      - "traefik.http.routers.instabot.entrypoints=websecure"
+      - "traefik.http.routers.instabot.tls.certresolver=myresolver"
+      - "traefik.http.routers.instabot.tls=true"
     networks:
       - wednesday_network
 
