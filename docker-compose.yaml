@@ -1,9 +1,54 @@
 version: '3.9'
 services:
-  webpage:
-    container_name: wednesday-os-website
-    build:
-      context: ./
-      dockerfile: Dockerfile
+  traefik:
+    container_name: traefik
+    image: traefik:v2.5
     ports:
-      - "420:80"
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - "./letsencrypt:/letsencrypt"
+    command:
+      - "--providers.docker=true"
+      - "--certificatesresolvers.myresolver.acme.email=odai@wednesdayos.com"
+      - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+      - "--certificatesresolvers.myresolver.acme.httpchallenge=true"
+      - "--certificatesresolvers.myresolver.acme.httpchallenge.entrypoint=web"
+      - "--entrypoints.web.http.redirections.entrypoint.to=websecure"
+      - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
+    networks:
+      - wednesday_network
+    
+  frontend:
+    container_name: frontend
+    image: iadox/wednesdayos-website:latest
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.frontend.rule=Host(`wednesdayos.com`)"
+      - "traefik.http.routers.frontend.entrypoints=websecure"
+      - "traefik.http.routers.frontend.tls.certresolver=myresolver"
+      - "traefik.http.routers.frontend.tls=true"
+    networks:
+      - wednesday_network
+ 
+  instabot:
+    container_name: instant
+    build:
+      context: ./instabot/
+      dockerfile: Dockerfile
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.frontend.rule=Host(`instabot.wednesdayos.com`)"
+      - "traefik.http.routers.frontend.entrypoints=websecure"
+      - "traefik.http.routers.frontend.tls.certresolver=myresolver"
+      - "traefik.http.routers.frontend.tls=true"
+    networks:
+      - wednesday_network
+
+networks:
+  wednesday_network:
+    name: wednesday_network
+

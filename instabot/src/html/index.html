@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Insta Bot</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="shoe.ico">
+    <link rel="stylesheet" href="styles.css"> 
+</head>
+<body>
+    <div class="background-gif"></div>
+  <div class="container">
+    <header>
+      <h1 style="color: #02b4f5;">Check if you're registered</h1>
+    </header>
+    <main>
+        <input class="check-input" type="text" id="inputString" placeholder="@instagram" onkeydown="if (event.key === 'Enter') checkString()">
+        <button class="check-button" onclick="checkString()">Check</button>
+        <p id="message"></p>
+    </main>
+    <footer>
+      <a class="website-link" href="https://wednesdayos.com" target="_blank">
+        <img src="WednesdayOSname.png" alt="" style="width: 180px;">
+        <img src="spinningfrog.gif" alt="" style="width: 30px;">
+      </a>
+    </footer>
+    </div>
+    <script>
+        function checkString() {
+            // Define the strings you want to check against
+            const definedStrings = ["odai.exe", "aquasazure", "iadox"];
+
+            // Get the input string from the user
+            const inputString = document.getElementById("inputString").value;
+            const messageElement = document.getElementById("message");
+
+            // Check if the input string is defined
+            if (definedStrings.includes(inputString)) {
+                // Redirect to fol.html if the string is defined
+                //window.location.href = "fol.html";
+                document.getElementById("message").innerHTML = "Your account is registered but the service is not yet ready on web.";
+                messageElement.style.color = "#02b4f5";
+            } else {
+                // Display an error message if the string is not defined
+                document.getElementById("message").innerHTML = "Your account is not registered. Please contact the administrator of instabot to register. (@odai.exe)";
+                messageElement.style.color = "#fa1302";
+            }
+        }
+    </script>
+</body>
+</html>
