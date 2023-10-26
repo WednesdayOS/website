@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Insta Bot</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="shoe.ico">
+    <link rel="stylesheet" href="login.css"> 
+</head>
+<body>
+    <div class="background-gif"></div>
+  <div class="container">
+    <header>
+      <h1 style="color: #02b4f5;">Check if you're registered</h1>
+    </header>
+    <main>
+        <input class="check-input" type="text" id="inputString" placeholder="@instagram" onkeydown="if (event.key === 'Enter') checkString()">
+        <button class="check-button" onclick="checkString()">Check</button>
+        <p id="message"></p>
+    </main>
+    <footer>
+      <a class="website-link" href="https://wednesdayos.com" target="_blank">
+        <img src="WednesdayOSname.png" alt="" style="width: 180px;">
+        <img src="spinningfrog.gif" alt="" style="width: 30px;">
+      </a>
+    </footer>
+    </div>
+    <script src="./login.js" type="text/javascript"></script>
+</body>
+</html>

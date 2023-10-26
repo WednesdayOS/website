@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Insta dashboard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="shoe.ico">
+    <link rel="stylesheet" href="dashboard.css"> 
+</head>
+<body>
+    <div class="background-pic"></div>
+    
+    <div class="dashboard-container">
+        <button class="toggle-button" onclick="toggleSidebar()">🍔</button>
+        <div class="sidebar">
+            <img src="suited_drog.png" alt="User Profile Picture">
+            <p class="rainbow-text">@LordFarquaad.bot</p>
+            <button class="btn" onclick="addNamesFromTextFile()">Unfollowers 🤡</button>
+            <button class="btn">Account 🧾</button>
+            <button class="btn">How to use 🤓</button>
+            <button class="btn">About this 🤖</button>
+            <button class="logoutbtn">🚪 logout</button>
+        </div>
+
+        <div class="content">
+            <h2>Current Followers</h2>
+            <div class="name-list">
+            <ul id="name-list">
+            </ul>
+        </div>
+        </div>
+    </div>
+
+    <footer>
+        <a class="website-link" href="https://wednesdayos.com" target="_blank">
+            <img src="WednesdayOSname.png" alt="" style="width: 180px;">
+            <img src="spinningfrog.gif" alt="" style="width: 30px;">
+        </a>
+    </footer>
+    <script src="./dashboard.js"></script>
+</body>
+</html>
