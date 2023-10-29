@@ -14,7 +14,7 @@ function checkString() {
         messageElement.style.color = "#02b4f5";
     } else {
         // Display an error message if the string is not defined
-        document.getElementById("message").innerHTML = "Your account is not registered. Please contact the administrator of instabot to register. (@odai.exe)";
+        document.getElementById("message").innerHTML = "Your account is not registered. Please contact @Wednesday.OS on Instagram";
         messageElement.style.color = "#fa1302";
     }
 }

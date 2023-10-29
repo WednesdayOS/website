@@ -1,7 +1,7 @@
 function addNamesFromTextFile() {
     const nameList = document.getElementById('name-list');
 
-    fetch('./followers.md')
+    fetch('./followers.txt')
         .then(response => response.text())
         .then(data => {
             const names = data.split('\n');

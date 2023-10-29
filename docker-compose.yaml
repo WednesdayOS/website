@@ -34,17 +34,17 @@ services:
     networks:
       - wednesday_network
  
-  instabot:
-    container_name: instabot
+  bot:
+    container_name: bot
     build:
-      context: ./instabot/
+      context: ./bot/
       dockerfile: Dockerfile
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.instabot.rule=Host(`instabot.wednesdayos.com`)"
-      - "traefik.http.routers.instabot.entrypoints=websecure"
-      - "traefik.http.routers.instabot.tls.certresolver=myresolver"
-      - "traefik.http.routers.instabot.tls=true"
+      - "traefik.http.routers.bot.rule=Host(`bot.wednesdayos.com`)"
+      - "traefik.http.routers.bot.entrypoints=websecure"
+      - "traefik.http.routers.bot.tls.certresolver=myresolver"
+      - "traefik.http.routers.bot.tls=true"
     networks:
       - wednesday_network
 
