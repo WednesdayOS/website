@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Insta dashboard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport">
+    <link rel="icon" type="image/x-icon" href="shoe.ico">
+    <link rel="stylesheet" href="dashboard.css"> 
+</head>
+<body>
+    <div class="background-pic"></div>
+    <header>
+        <button class="toggle-button" onclick="toggleSidebar()">🍔</button>
+        <a class="website-link" href="https://wednesdayos.com" target="_blank">
+            <img src="WednesdayOSname.png" alt="" style="width: 222px;">
+            <img src="spinningfrog.gif" alt="" style="width: 37px;">
+        </a>
+    </header>
+    
+    <div class="dashboard-container">
+        <div class="sidebar">
+            <img src="suited_drog.png" alt="User Profile Picture">
+            <p class="rainbow-text">@bot.wednesdayos</p>
+            <button class="btn" onclick="redirectToPage('dashboard.html')">Unfollowers 🤡</button>
+            <button class="btn" onclick="redirectToPage('account.html')">Account 🧾</button>
+            <button class="btn" onclick="redirectToPage('how.html')">How to use 🤓</button>
+            <button class="btn" onclick="redirectToPage('about.html')">About 🤖</button>
+            <button class="logoutbtn" onclick="redirectToPage('index.html')">Logout 🚪</button>
+        </div>
+        <div class="about-box">
+            <div class="about-info">
+                <h1>What is WednesdayOS Bot?</h1>
+                <h3>WednesdayOS Bot is an Instagram bot that can perform operations that you usually can't do or maybe hard for you.</h3>
+                <h3>Such as:</h3>
+                <h3>    - Checking who unfollowed you since you registered.</h3>
+                <h3>    - Cool stats about your account.</h3>
+                <br>
+                <h3>Our instagram bot account needs to be following your account for it to work.</h3>
+                <h3>Once you're registered you will receive a follow from our bot, please accept it.</h3>
+                <h3>The bot was developed in January 2023, but recently I decided to publish it as a WebApp.</h3>
+                <h3>So, it's still in the process of being ported.</h3>
+                <h3>This is just a frontend Demo</h3>
+            </div>
+        </div>
+    </div>
+    <footer>
+    </footer>
+    <script src="./dashboard.js"></script>
+</body>
+</html>

@@ -30,3 +30,11 @@ function toggleSidebar() {
         sidebar.classList.add("sidebar-hidden");
     }
 }
+
+function LogOut() {
+    window.location.href = "index.html";
+}
+
+function redirectToPage(destinationURL) {
+    window.location.href = destinationURL;
+}

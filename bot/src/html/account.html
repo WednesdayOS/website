@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Insta dashboard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport">
+    <link rel="icon" type="image/x-icon" href="shoe.ico">
+    <link rel="stylesheet" href="dashboard.css"> 
+</head>
+<body>
+    <div class="background-pic"></div>
+    <header>
+        <button class="toggle-button" onclick="toggleSidebar()">🍔</button>
+        <a class="website-link" href="https://wednesdayos.com" target="_blank">
+            <img src="WednesdayOSname.png" alt="" style="width: 222px;">
+            <img src="spinningfrog.gif" alt="" style="width: 37px;">
+        </a>
+    </header>
+    
+    <div class="dashboard-container">
+        <div class="sidebar">
+            <img src="suited_drog.png" alt="User Profile Picture">
+            <p class="rainbow-text">@bot.wednesdayos</p>
+            <button class="btn" onclick="redirectToPage('dashboard.html')">Unfollowers 🤡</button>
+            <button class="btn" onclick="redirectToPage('account.html')">Account 🧾</button>
+            <button class="btn" onclick="redirectToPage('how.html')">How to use 🤓</button>
+            <button class="btn" onclick="redirectToPage('about.html')">About 🤖</button>
+            <button class="logoutbtn" onclick="redirectToPage('index.html')">Logout 🚪</button>
+        </div>
+        <div class="about-box">
+            <div class="about-info">
+                <h1>Followers: 0 (-1 🔻: You had 1 follower and they unfollowed you, lol)</h1>
+                <h1>Following: 5700 (+200 📈: you follow too many accounts...)</h1>
+                <br>
+                <h1>Your PFP is the reason you got no followers, I suggest you use this instead:</h1>
+                <img src="bussin_Drog.png" alt="User Profile Picture" style="height: 300px;" href="bussin_Drog.png" download>
+            </div>
+        </div>
+    </div>
+    <footer>
+    </footer>
+    <script src="./dashboard.js"></script>
+</body>
+</html>

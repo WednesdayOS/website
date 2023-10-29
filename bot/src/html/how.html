@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Insta dashboard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport">
+    <link rel="icon" type="image/x-icon" href="shoe.ico">
+    <link rel="stylesheet" href="dashboard.css"> 
+</head>
+<body>
+    <div class="background-pic"></div>
+    <header>
+        <button class="toggle-button" onclick="toggleSidebar()">🍔</button>
+        <a class="website-link" href="https://wednesdayos.com" target="_blank">
+            <img src="WednesdayOSname.png" alt="" style="width: 222px;">
+            <img src="spinningfrog.gif" alt="" style="width: 37px;">
+        </a>
+    </header>
+    
+    <div class="dashboard-container">
+        <div class="sidebar">
+            <img src="suited_drog.png" alt="User Profile Picture">
+            <p class="rainbow-text">@bot.wednesdayos</p>
+            <button class="btn" onclick="redirectToPage('dashboard.html')">Unfollowers 🤡</button>
+            <button class="btn" onclick="redirectToPage('account.html')">Account 🧾</button>
+            <button class="btn" onclick="redirectToPage('how.html')">How to use 🤓</button>
+            <button class="btn" onclick="redirectToPage('about.html')">About 🤖</button>
+            <button class="logoutbtn" onclick="redirectToPage('index.html')">Logout 🚪</button>
+        </div>
+        <div class="about-box">
+            <div class="about-info">
+                <h1>How to use WednesdayOS Bot?</h1>
+                <h3>1- Register your account, contact @Bot.WednesdayOS on instagram</h3>
+                <h3>2- Login with username</h3>
+                <h3>3- You will receive a 1 time use token as a DM on your registered instagram account, from @Bot.WednesdayOS</h3>
+                <h3>4- copy paste the token in the entry where it's asking for it.</h3>
+                <h3>5- You will get logged in</h3>
+                <h3>6- Click any option you want from the burger menu</h3>
+            </div>
+        </div>
+    </div>
+    <footer>
+    </footer>
+    <script src="./dashboard.js"></script>
+</body>
+</html>

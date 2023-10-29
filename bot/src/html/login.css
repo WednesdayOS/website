@@ -26,9 +26,9 @@ body {
 .container {
     max-width: 600px;
     padding: 40px;
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(0, 238, 255, 0.6);
     border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: rgba(0, 238, 255, 0.6);
     text-align: center;
     z-index: 1;
 }
@@ -46,7 +46,7 @@ main p {
 .check-button {
     display: inline-block;
     padding: 12px 24px;
-    background-color: #02b4f5;
+    background-color: #00eeff98;
     color: #fff;
     text-decoration: none;
     border-radius: 4px;
@@ -58,7 +58,7 @@ main p {
     display: inline-block;
     padding: 12px 24px;
     background-color: #ffffff;
-    color: #02b4f5;
+    color: #0051ff98;
     text-decoration: none;
     border-radius: 4px;
     font-size: 18px;
