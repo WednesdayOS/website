@@ -22,29 +22,43 @@ services:
     networks:
       - wednesday_network
     
-  frontend:
-    container_name: frontend
+  wednesdayos:
+    container_name: wednesdayos
     image: iadox/wednesdayos-website:latest
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.frontend.rule=Host(`wednesdayos.com`)"
-      - "traefik.http.routers.frontend.entrypoints=websecure"
-      - "traefik.http.routers.frontend.tls.certresolver=myresolver"
-      - "traefik.http.routers.frontend.tls=true"
+      - "traefik.http.routers.wednesdayos.rule=Host(`wednesdayos.com`)"
+      - "traefik.http.routers.wednesdayos.entrypoints=websecure"
+      - "traefik.http.routers.wednesdayos.tls.certresolver=myresolver"
+      - "traefik.http.routers.wednesdayos.tls=true"
     networks:
       - wednesday_network
  
-  bot:
-    container_name: bot
+  bot_frontend:
+    container_name: bot_frontend
     build:
-      context: ./bot/
+      context: ./bot_frontend/
       dockerfile: Dockerfile
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.bot.rule=Host(`bot.wednesdayos.com`)"
-      - "traefik.http.routers.bot.entrypoints=websecure"
-      - "traefik.http.routers.bot.tls.certresolver=myresolver"
-      - "traefik.http.routers.bot.tls=true"
+      - "traefik.http.routers.bot_frontend.rule=Host(`bot.wednesdayos.com`)"
+      - "traefik.http.routers.bot_frontend.entrypoints=websecure"
+      - "traefik.http.routers.bot_frontend.tls.certresolver=myresolver"
+      - "traefik.http.routers.bot_frontend.tls=true"
+    networks:
+      - wednesday_network
+
+  bot_backend:
+    container_name: bot_backend
+    build:
+      context: ./bot_backend/
+      dockerfile: Dockerfile
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.bot_backend.rule=Host(`bot-api.wednesdayos.com`)"
+      - "traefik.http.routers.bot_backend.entrypoints=websecure"
+      - "traefik.http.routers.bot_backend.tls.certresolver=myresolver"
+      - "traefik.http.routers.bot_backend.tls=true"
     networks:
       - wednesday_network
 
