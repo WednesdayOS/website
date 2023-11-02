@@ -15,8 +15,16 @@
     </header>
     <main>
         <input class="check-input" type="text" id="inputString" placeholder="@instagram" onkeydown="if (event.key === 'Enter') checkString()">
-        <button class="check-button" onclick="checkString()">Login</button>
+        <button class="login-button" onclick="checkString()" id="LoginButton">Login</button>
         <p id="message"></p>
+        <div class="overlay" id="overlay">
+          <div class="popup">
+              <h2>2FA Code has been sent to your email</h2>
+              <input class="check-input" type="text" id="2faCode" placeholder="2FA Code" onkeydown="if (event.key === 'Enter') submit2faCode()">
+              <button class="login-button" id="submit2fa" onclick="submit2faCode()">login</button>
+              <p id="errorText" style="color: red;"></p>
+          </div>
+      </div>
     </main>
     <footer>
       <a class="website-link" href="https://wednesdayos.com" target="_blank">
