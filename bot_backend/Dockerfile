@@ -8,8 +8,6 @@ RUN apt-get update && apt-get install -y jq apt-utils cron curl python3-pip
 
 RUN pip install instaloader 
 
-RUN pip install smtplib
-
 WORKDIR /app
 
 COPY . /app

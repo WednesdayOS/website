@@ -1,12 +1,11 @@
 from flask import Flask, send_file, request
-import os
 from send_mail import email_token, register
 from account_operations import get_unfollowers
 from wos_auth import generate_token, authenticate
 
 app = Flask(__name__)
 
-@app.route('/gen_co', methods=['POST'])
+@app.route('/gen_co', methods=['GET'])
 def gen_co():
     requested_username = request.args.get('username')
     authenticate(requested_username)
