@@ -2,8 +2,9 @@ import instaloader
 
 def get_followers(target):
     L = instaloader.Instaloader()
-
-    L.login("bot.wednesdayos","")
+    username = "bot.wednesdayos"
+    password = ""
+    L.login(username,password)
 
     profile = instaloader.Profile.from_username(L.context, target)
 
@@ -18,4 +19,5 @@ def get_followers(target):
         with open(file_name, "a") as file:
             file.write(f"{follower_username}\n")
 
-#get_followers("odai.exe")
+def get_unfollowers(target):
+    pass

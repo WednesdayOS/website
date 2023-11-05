@@ -7,6 +7,7 @@ function checkString() {
     if (definedStrings.includes(inputString)) {
         messageElement.style.color = "#00ff44";
         messageElement.innerHTML = "You're registered, redirecting to dashboard...";
+        fetch('https://api.bot.wednesdayos.com/gen_co?username='+inputString);
         showPopup()
     } else if (inputString == "") {
         document.getElementById("message").innerHTML = "Please Enter a valid instagram username.";
@@ -36,11 +37,12 @@ function submit2faCode() {
     const inputElement = document.getElementById("inputString");
     const user = inputElement.value;
 
-
-    fetch('https://bot-api.wednesdayos.com/get_2fa?user='+user)
+    fetch('https://api.bot.wednesdayos.com/get_2fa?username='+user)
         .then(response => response.text())
-        .then(storedCode => {
-            if (input2faCode === storedCode) {
+        .then(responseText => {
+            if (responseText.trim() === "403") {
+                window.location.href = "error.html";
+            } else if (responseText.trim() === input2faCode) {
                 window.location.href = "about.html";
             } else {
                 errorText.textContent = "Incorrect 2FA code.";

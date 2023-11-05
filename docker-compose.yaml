@@ -53,9 +53,11 @@ services:
     build:
       context: ./bot_backend/
       dockerfile: Dockerfile
+    volumes:
+      - users_data:/accounts
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.bot_backend.rule=Host(`bot-api.wednesdayos.com`)"
+      - "traefik.http.routers.bot_backend.rule=Host(`api.bot.wednesdayos.com`)"
       - "traefik.http.routers.bot_backend.entrypoints=websecure"
       - "traefik.http.routers.bot_backend.tls.certresolver=myresolver"
       - "traefik.http.routers.bot_backend.tls=true"
@@ -68,3 +70,4 @@ networks:
 
 volumes:
   acme:
+  users_data:
