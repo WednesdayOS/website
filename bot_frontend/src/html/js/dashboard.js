@@ -1,5 +1,5 @@
-const params = new URLSearchParams(window.location.search);
-const username = params.get('username');
+let params = new URLSearchParams(window.location.search);
+let username = params.get('username');
 document.getElementById("username").textContent = username;
 
 function addNamesFromTextFile() {
@@ -42,6 +42,7 @@ function LogOut() {
 function redirectToPage(destinationURL) {
     const params = new URLSearchParams(window.location.search);
     const username = params.get('username');
-    window.location.href = destinationURL+'?username='+encodeURIComponent(username);
+    //window.location.href = destinationURL+'?username='+encodeURIComponent(username);
+    window.open(destinationURL+'?username='+encodeURIComponent(username),'_self')
     document.getElementById("username").textContent = username;
 }
