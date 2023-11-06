@@ -28,10 +28,10 @@ function checkString() {
                     }); 
                 showPopup()
             } else if (response.status === 403) {
-                document.getElementById("message").innerHTML = "Please Enter a valid instagram username.";
+                document.getElementById("message").innerHTML = "Your account is not registered. Please contact @odai.exe on Instagram";
                 messageElement.style.color = "#fa1302";
             } else {
-                document.getElementById("message").innerHTML = "Your account is not registered. Please contact @Wednesday.OS on Instagram";
+                document.getElementById("message").innerHTML = "????🙂";
                 messageElement.style.color = "#fa1302";
             }
         })
