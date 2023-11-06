@@ -15,7 +15,7 @@ def gen_co():
     if user_status == "0":
         generate_token(requested_username)
         email_token(requested_username)
-        abort(200)
+        return 200
     else:
         abort(403)
 
@@ -33,7 +33,7 @@ def auth():
         real_token = file.read()
         print(f"actual token: {real_token}")
     if user_status == "0" and real_token == e_token:
-        abort(200)
+        return 200
     else:
         abort(403)
 
