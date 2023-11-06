@@ -4,6 +4,7 @@ import os
 import csv
 
 def generate_token(user):
+    print("Entered generate_token function")
     os.makedirs(f"accounts/{user}", exist_ok=True)
 
     characters = string.ascii_uppercase + string.digits
@@ -16,6 +17,7 @@ def generate_token(user):
         file.write(random_string)
 
 def authenticate(user):
+    print("Entered authenticate function")
     os.makedirs(f"accounts/{user}", exist_ok=True)
     csv_file = 'accounts/registered.csv'
     status_file = f'accounts/{user}/status.txt'

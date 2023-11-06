@@ -4,6 +4,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 def email_token(recipient_username):
+    print("Entered email_token function")
     sender = 'bot.wednesdayos@outlook.com'
     password= ''
     recipient_email = get_email(recipient_username)
@@ -44,7 +45,6 @@ def email_token(recipient_username):
 
 def register(recipient_email,recipient_username):
     sender = 'bot.wednesdayos@outlook.com'
-    recipient_email
 
     with open('registration_email_template.html', 'r') as file:
         email_template = file.read()
@@ -75,6 +75,7 @@ def register(recipient_email,recipient_username):
     smtpObj.quit()
 
 def get_email(user):
+    print("Entered get_email function")
     csv_file = 'accounts/registered.csv'
 
     with open(csv_file, 'r', newline='') as file:
@@ -86,6 +87,7 @@ def get_email(user):
     return "n"
 
 def get_token(user):
+    print("Entered get_token function")
     file_path = f'accounts/{user}/login_token.txt'
     file_contents = "No Token"
     with open(file_path, 'r') as file:

@@ -1,5 +1,5 @@
 function checkString() {
-    const definedStrings = ["odai.exe", "ellieshxnnon", "wakeupitsasimulation", "ineverdrinkwater"];
+    const definedStrings = ["odai.exe", "wednesday.os", "ellieshxnnon", "wakeupitsasimulation", "ineverdrinkwater"];
 
     const inputString = document.getElementById("inputString").value;
     const messageElement = document.getElementById("message");
@@ -37,18 +37,17 @@ function submit2faCode() {
     const inputElement = document.getElementById("inputString");
     const user = inputElement.value;
 
-    fetch('https://api.bot.wednesdayos.com/get_2fa?username='+user)
-        .then(response => response.text())
-        .then(responseText => {
-            if (responseText.trim() === "403") {
-                window.location.href = "error.html";
-            } else if (responseText.trim() === input2faCode) {
+    fetch('https://api.bot.wednesdayos.com/auth?username='+user+'&etoken='+input2faCode)
+        .then(response => {
+            if (response.status === 200) {
                 window.location.href = "about.html";
+            } else if (response.status === 403) {
+                window.location.href = "error.html";
             } else {
-                errorText.textContent = "Incorrect 2FA code.";
+                errorText.textContent = "Unknown error occurred.";
             }
         })
         .catch(error => {
-            errorText.textContent = "Error reading 2FA code, please wait 1 min and try again";
+            errorText.textContent = "Error occurred, please try again.";
         });
 }
