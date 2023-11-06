@@ -64,6 +64,21 @@ services:
     networks:
       - wednesday_network
 
+  bot_register:
+    container_name: bot_register
+    build:
+      context: ./bot_register/
+      dockerfile: Dockerfile
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.bot_register.rule=Host(`register.bot.wednesdayos.com`)"
+      - "traefik.http.routers.bot_register.entrypoints=websecure"
+      - "traefik.http.routers.bot_register.tls.certresolver=myresolver"
+      - "traefik.http.routers.bot_register.tls=true"
+    networks:
+      - wednesday_network
+
+
 networks:
   wednesday_network:
     name: wednesday_network

@@ -30,5 +30,3 @@ def create_user(username, email):
     else:
         print("a user with this email already exists")
 
-
-create_user("nuzhatmskarim","nuzhatmskarim@gmail.com")

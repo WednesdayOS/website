@@ -3,11 +3,22 @@ from flask_cors import CORS
 from send_mail import email_token, register
 from account_operations import get_unfollowers
 from wos_auth import generate_token, authenticate
-from user_management import check_if_user_exists
+from user_management import check_if_user_exists, create_user
 
 app = Flask(__name__)
 
 cors_all = CORS(app, resources={r"/*": {"origins": "*"}})
+
+@app.route('/register_user', methods=['GET'])
+def register_user():
+    requested_username = request.args.get('username')
+    requested_email = request.args.get('email')
+    exists = check_if_user_exists(requested_username)
+    if exists == 0:
+        abort(403)
+    else:
+        create_user(requested_username, requested_email)
+        return "Request was successful", 200
 
 @app.route('/is_registered', methods=['GET'])
 def is_registered():

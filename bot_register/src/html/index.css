@@ -1,0 +1,90 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+  
+.background-gif {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('images/shoe.png') center center no-repeat;
+  background-size: cover;
+  filter: blur(6px);
+  opacity: 0.9;
+  z-index: -1;
+}
+  
+.container {
+    max-width: 600px;
+    padding: 40px;
+    background-color: rgba(255, 255, 0, 0.6);
+    border-radius: 8px;
+    box-shadow: rgba(255, 0, 0, 0.6);
+    text-align: center;
+    z-index: 1;
+}
+  
+header h1 {
+    font-size: 32px;
+    margin-bottom: 16px;
+}
+  
+main p {
+    font-size: 18px;
+    margin-bottom: 24px;
+}
+  
+.register-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #04ff00;
+    color: #000000;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 18px;
+    transition: background-color 0.3s;
+    margin: 5px;
+}
+
+.check-input {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #ffffff;
+    color: #0051ff98;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 18px;
+    margin: 5px;
+    transition: background-color 0.3s;
+}
+  
+footer {
+    text-align: center;
+    margin-top: 20px;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+  
+.website-link {
+    text-decoration: none;
+    color: #007bff;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+  
+.website-link:hover {
+    text-decoration: underline;
+}

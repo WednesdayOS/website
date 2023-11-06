@@ -36,7 +36,7 @@ function checkString() {
             }
         })
         .catch(error => {
-            errorText.textContent = "Error occurred, please try again.";
+            errorText.textContent = "Some error occurred, please try again.";
         });
     }
 }
@@ -74,6 +74,6 @@ function submit2faCode() {
             }
         })
         .catch(error => {
-            errorText.textContent = "Error occurred, please try again.";
+            errorText.textContent = "Some error occurred, please try again.";
         });
 }
