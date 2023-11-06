@@ -1,9 +1,22 @@
 from flask import Flask, send_file, request, abort
+from flask_cors import CORS
 from send_mail import email_token, register
 from account_operations import get_unfollowers
 from wos_auth import generate_token, authenticate
+from user_management import check_if_user_exists
 
 app = Flask(__name__)
+
+cors_all = CORS(app, resources={r"/*": {"origins": "*"}})
+
+@app.route('/is_registered', methods=['GET'])
+def is_registered():
+    requested_username = request.args.get('username')
+    exists = check_if_user_exists(requested_username)
+    if exists == 0:
+        abort(403)
+    else:
+        return "Request was successful", 200
 
 @app.route('/gen_co', methods=['GET'])
 def gen_co():
@@ -15,7 +28,7 @@ def gen_co():
     if user_status == "0":
         generate_token(requested_username)
         email_token(requested_username)
-        return 200
+        return "Request was successful", 200
     else:
         abort(403)
 
@@ -33,7 +46,7 @@ def auth():
         real_token = file.read()
         print(f"actual token: {real_token}")
     if user_status == "0" and real_token == e_token:
-        return 200
+        return "Request was successful", 200
     else:
         abort(403)
 

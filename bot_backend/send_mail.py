@@ -2,11 +2,11 @@ import smtplib
 import csv
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+sender = 'bot.wednesdayos@outlook.com'
+password= ''
 
 def email_token(recipient_username):
     print("Entered email_token function")
-    sender = 'bot.wednesdayos@outlook.com'
-    password= ''
     recipient_email = get_email(recipient_username)
 
     with open('auth_email_template.html', 'r') as file:
@@ -44,8 +44,6 @@ def email_token(recipient_username):
     smtpObj.quit()
 
 def register(recipient_email,recipient_username):
-    sender = 'bot.wednesdayos@outlook.com'
-
     with open('registration_email_template.html', 'r') as file:
         email_template = file.read()
 
@@ -70,7 +68,7 @@ def register(recipient_email,recipient_username):
 
     smtpObj.ehlo()
     smtpObj.starttls()
-    smtpObj.login(sender, "") 
+    smtpObj.login(sender, password) 
     smtpObj.sendmail(sender, recipient_email, msg.as_string())
     smtpObj.quit()
 

@@ -1,11 +1,11 @@
 import random
 import string
-import os
+from os import makedirs
 import csv
 
 def generate_token(user):
     print("Entered generate_token function")
-    os.makedirs(f"accounts/{user}", exist_ok=True)
+    makedirs(f"accounts/{user}", exist_ok=True)
 
     characters = string.ascii_uppercase + string.digits
 
@@ -18,7 +18,7 @@ def generate_token(user):
 
 def authenticate(user):
     print("Entered authenticate function")
-    os.makedirs(f"accounts/{user}", exist_ok=True)
+    makedirs(f"accounts/{user}", exist_ok=True)
     csv_file = 'accounts/registered.csv'
     status_file = f'accounts/{user}/status.txt'
     found = False
@@ -36,3 +36,9 @@ def authenticate(user):
         else:
             status_file.write("1")
 
+def enable_user(user):
+    print("Entered enable_user function")
+    makedirs(f"accounts/{user}", exist_ok=True)
+    status_file = f'accounts/{user}/status.txt'
+    with open(status_file, 'w') as status_file:
+        status_file.write("0")
