@@ -3,16 +3,6 @@ import instaloader
 bot_username = "bot.wednesdayos"
 bot_password = ""
 
-def add_to_file(string, file_name):
-    with open(file_name, 'r') as checking_file:
-        checking_lines = set(checking_file.read().splitlines())
-
-    if string in checking_lines:
-        print(f"this account: {string} is already inside {file_name}, skipping...")
-    else:
-        with open(file_name, "a") as file:
-           file.write(f"{string}\n")
-
 def get_followers(target):
     L = instaloader.Instaloader()
     L.login(bot_username,bot_password)
@@ -29,9 +19,18 @@ def get_followers(target):
             # This will open the file in write mode, effectively clearing its contents.
             pass
     for follower_username in followers:
-        print(follower_username)
         with open(file_name, "a") as file:
             file.write(f"{follower_username}\n")
+
+def add_to_file(string, file_name):
+    with open(file_name, 'r') as checking_file:
+        checking_lines = set(checking_file.read().splitlines())
+
+    if string in checking_lines:
+        print(f"this account: {string} is already inside {file_name}, skipping...")
+    else:
+        with open(file_name, "a") as file:
+           file.write(f"{string}\n")
 
 def compare(target):
     with open(f"accounts/{target}/existing/followers.txt", 'r') as existing_file:
@@ -80,10 +79,33 @@ def new_becomes_existing(target):
                 output_file.write(f"{line}\n")
     print("new followers list is now considered existing")
 
+def print_followers(target):
+    with open(f"accounts/{target}/new/followers.txt") as file:
+        print(file.read())
+
 def brain(acc_user):
     get_followers(acc_user)
+    #debug
+    print("after get follower")
+    #print_followers(acc_user)
+
     compare(acc_user)
+    #debug
+    print("after compare")
+    #print_followers(acc_user)
+
     generate_html(acc_user, "recent_followers")
+    #debug
+    print("after generate recent followers")
+    #print_followers(acc_user)
+
     generate_html(acc_user, "unfollowers")
+    #debug
+    print("after generate unfollowers")
+    #print_followers(acc_user)
+
     new_becomes_existing(acc_user)
+    #debug
+    print("after new became existing")
+    #print_followers(acc_user)
 

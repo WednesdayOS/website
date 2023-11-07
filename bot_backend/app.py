@@ -13,7 +13,8 @@ cors_all = CORS(app, resources={r"/*": {"origins": "*"}})
 def get_unfollowers_list():
     requested_username = request.args.get('username')
     exists = check_if_user_exists(requested_username)
-    if exists == 0:
+    if exists == 1:
+        brain(requested_username)
         try:
             file_path = f"accounts/{requested_username}/unfollowers.html"
             with open(file_path, 'r') as file:
