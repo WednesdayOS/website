@@ -14,7 +14,7 @@ def register_user():
     requested_username = request.args.get('username')
     requested_email = request.args.get('email')
     exists = check_if_user_exists(requested_username)
-    if exists == 0:
+    if exists == 1:
         abort(403)
     else:
         create_user(requested_username, requested_email)

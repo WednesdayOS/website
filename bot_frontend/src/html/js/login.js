@@ -25,7 +25,7 @@ function checkString() {
                 fetch('https://api.bot.wednesdayos.com/gen_co?username='+inputString, {
                     method: 'GET',
                     mode: 'cors'
-                    }); 
+                }); 
                 showPopup()
             } else if (response.status === 403) {
                 document.getElementById("message").innerHTML = "Your account is not registered. Please contact @odai.exe on Instagram";
@@ -58,7 +58,7 @@ function showPopup() {
 function submit2faCode() {
     const input2faCode = document.getElementById("2faCode").value;
     const inputElement = document.getElementById("inputString");
-    const user = inputElement.value;
+    const user = inputElement.value.toLowerCase();
     fetch('https://api.bot.wednesdayos.com/auth?username='+user+'&etoken='+input2faCode, {
         method: 'GET'
         })

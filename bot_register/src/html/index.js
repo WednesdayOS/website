@@ -25,7 +25,7 @@ function checkString() {
             console.log('Response status:', response.status);
             if (response.status === 200) {
                 messageElement.style.color = "#00ff44";
-                messageElement.innerHTML = "User registered successfully!";
+                document.getElementById("message").innerHTML = "User registered successfully!";
             } else if (response.status === 403) {
                 document.getElementById("message").innerHTML = "An error occured, likely user or email already exists";
                 messageElement.style.color = "#fa1302";
