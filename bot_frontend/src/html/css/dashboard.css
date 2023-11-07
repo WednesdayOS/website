@@ -81,7 +81,7 @@ header {
 .box {
   flex: 1;
   padding: 20px;
-  max-width: 50%;
+  max-width: 80%;
   margin: 0 auto;
   flex-basis: calc(50% - 10px);
 }
@@ -163,7 +163,11 @@ ul {
 }
 
 li {
-  margin: 5px 0;
+  margin: 10px;
+}
+
+li a {
+  color: rgb(255, 81, 0);
 }
 
 .btn {
@@ -177,7 +181,7 @@ li {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 14px;
   margin: 12px 2px;
   cursor: pointer;
 }
@@ -225,4 +229,14 @@ li {
   .box  {
     flex-basis: 100%;
   }
+}
+
+.inbox-message {
+  padding: 5px;
+  margin: 5px;
+  text-align: center;
+  color: #333;
+  font-size: 28px;
+  font-style: italic; 
+  opacity: 0.7; 
 }

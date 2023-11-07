@@ -1,13 +1,28 @@
 from flask import Flask, send_file, request, abort
 from flask_cors import CORS
 from send_mail import email_token, register
-from account_operations import get_unfollowers
+from account_operations import brain
 from wos_auth import generate_token, authenticate
 from user_management import check_if_user_exists, create_user
 
 app = Flask(__name__)
 
 cors_all = CORS(app, resources={r"/*": {"origins": "*"}})
+
+@app.route('/get_unfollowers_list', methods=['GET'])
+def get_unfollowers_list():
+    requested_username = request.args.get('username')
+    exists = check_if_user_exists(requested_username)
+    if exists == 0:
+        try:
+            file_path = f"accounts/{requested_username}/unfollowers.html"
+            with open(file_path, 'r') as file:
+                file_content = file.read()
+            return file_content, 200
+        except FileNotFoundError:
+            abort(404)  
+    else:
+        abort(403)
 
 @app.route('/register_user', methods=['GET'])
 def register_user():

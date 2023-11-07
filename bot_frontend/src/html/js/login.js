@@ -65,7 +65,6 @@ function submit2faCode() {
         .then(response => {
             console.log('Response status:', response.status);
             if (response.status === 200) {
-                //window.location.href = 'about.html?username=@'+encodeURIComponent(user);
                 window.open('about.html?username=@'+encodeURIComponent(user), '_self')
             } else if (response.status === 403) {
                 window.location.href = "error.html";
