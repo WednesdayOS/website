@@ -2,7 +2,7 @@ let params = new URLSearchParams(window.location.search);
 let username = params.get('username');
 document.getElementById("username").textContent = username;
 
-function loadlist(username) {
+function loadlist() {
     var element = document.getElementById("username");
     var user = element.innerHTML;
     if (user.startsWith("@")) {
@@ -40,7 +40,8 @@ function redirectToPage(destinationURL) {
     } else if (destinationURL == "dashboard.html"){
         window.open(destinationURL+'?username='+encodeURIComponent(username),'_self')
         document.getElementById("username").textContent = username;
-        loadlist(username);
+        console.log("went to dashboard.html")
+        loadlist();
     } else {
         window.open(destinationURL+'?username='+encodeURIComponent(username),'_self')
         document.getElementById("username").textContent = username;
