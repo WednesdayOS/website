@@ -19,7 +19,10 @@
         <p id="message"></p>
         <div class="overlay" id="overlay">
           <div class="popup">
-              <h2>2FA Code has been sent to your email</h2>
+              <h2>Peter Alert</h2>
+              <div class="peter">
+                <img src="images/peter.png" alt="" style="width: 100px;">
+              </div>
               <input class="check-input" type="text" id="2faCode" placeholder="2FA Code" onkeydown="if (event.key === 'Enter') submit2faCode()">
               <button class="login-button" id="submit2fa" onclick="submit2faCode()">login</button>
               <p id="errorText" style="color: red;"></p>
