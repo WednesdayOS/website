@@ -1,13 +1,14 @@
 FROM python:3.8-slim
 
-# Install Bash
-RUN apt-get update && apt-get install -y bash
-
 RUN apt-get update && \
-    apt-get install -y jq apt-utils cron curl python3-pip &&\
+    apt-get install -y bash jq apt-utils cron curl python3-pip && \
     rm -rf /var/lib/apt/lists/*
 
-RUN pip install instaloader 
+RUN pip install instaloader Flask flask_cors ip2geotools
+
+RUN apt-get update && \
+    apt-get install -y awscli && \
+    rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
@@ -15,11 +16,9 @@ COPY . /app
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-RUN pip install flask_cors
+RUN aws configure --profile default --credentials aws_config
 
-RUN pip install --trusted-host pypi.python.org Flask ip2geotools
-
-RUN pip install awscli --upgrade --user
+RUN export AWS_PROFILE=default
 
 RUN aws s3 sync s3://wednesdayos/accounts/ accounts
 
