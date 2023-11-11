@@ -1,6 +1,7 @@
-from flask import Flask, send_file, request, abort
+from flask import Flask, request, abort, jsonify
+from ip2geotools.databases.noncommercial import DbIpCity
 from flask_cors import CORS
-from send_mail import email_token, register
+from send_mail import email_token
 from account_operations import brain
 from wos_auth import generate_token, authenticate
 from user_management import check_if_user_exists, create_user
@@ -8,6 +9,19 @@ from user_management import check_if_user_exists, create_user
 app = Flask(__name__)
 
 cors_all = CORS(app, resources={r"/*": {"origins": "*"}})
+
+@app.route('/get_ip', methods=['GET'])
+def get_ip():
+    ip_address = request.remote_addr
+    response_data = {'ip': ip_address}
+    try:
+        response = DbIpCity.get(ip_address, api_key='free')
+        response_data['country'] = response.country
+        response_data['city'] = response.city
+    except Exception as e:
+        response_data['error'] = str(e)
+
+    return jsonify(response_data)
 
 @app.route('/get_unfollowers_list', methods=['GET'])
 def get_unfollowers_list():
