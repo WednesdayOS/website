@@ -12,7 +12,7 @@ function loadlist() {
     } else {
         console.log("String does not start with '@'.");
     }
-    console.log(user)
+    console.log(user);
     fetch('https://api.bot.wednesdayos.com/get_unfollowers_list?username='+user)
         .then(response => response.text())
         .then(data => {

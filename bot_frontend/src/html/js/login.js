@@ -93,7 +93,15 @@ function showPopup() {
 function submit2faCode() {
     const input2faCode = document.getElementById("2faCode").value;
     const inputElement = document.getElementById("inputString");
-    const user = inputElement.value.toLowerCase();
+    var user = inputElement.value.toLowerCase();
+    if (user.startsWith("@")) {
+        console.log("username starts with @")
+        user = user.slice(1);
+        console.log(user);
+    } else {
+        console.log("String does not start with '@'.");
+    }
+    console.log(user);
     fetch('https://api.bot.wednesdayos.com/auth?username='+user+'&etoken='+input2faCode, {
         method: 'GET'
         })
@@ -102,7 +110,8 @@ function submit2faCode() {
             if (response.status === 200) {
                 window.open('about.html?username=@'+encodeURIComponent(user), '_self')
             } else if (response.status === 403) {
-                window.location.href = "error.html";
+                errorText.textContent = "Error, Wrong 2FA or your account is disabled.";
+                //window.location.href = "error.html";
             } else {
                 errorText.textContent = "Unknown error occurred.";
             }

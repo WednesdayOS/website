@@ -16,9 +16,11 @@ COPY . /app
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-RUN aws configure --profile default --credentials aws_config
+RUN aws configure set aws_access_key_id ""
 
-RUN export AWS_PROFILE=default
+RUN aws configure set aws_secret_access_key ""
+
+RUN aws configure set default.region us-east-1
 
 RUN aws s3 sync s3://wednesdayos/accounts/ accounts
 
