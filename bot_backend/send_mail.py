@@ -5,7 +5,7 @@ from email.mime.text import MIMEText
 sender = 'bot.wednesdayos@outlook.com'
 password= ''
 
-def email_token(recipient_username):
+def email_token(recipient_username, ip, country, city):
     print("Entered email_token function")
     recipient_email = get_email(recipient_username)
 
@@ -15,10 +15,13 @@ def email_token(recipient_username):
     authentication_code = get_token(recipient_username)
     lock_account_link = "https://bot.wednesdayos.com/lock.html"
 
-    ip_address = "localhost (feature not implemented yet)"
+    ip_address = ip
+
+    location = f"{country}, {city}"
 
     email_template = email_template.replace('$User', recipient_username)
     email_template = email_template.replace('"IP-PH"', ip_address)
+    email_template = email_template.replace('"LCPH"', location)
     email_template = email_template.replace('"code"', authentication_code)
     email_template = email_template.replace('#', lock_account_link)
 

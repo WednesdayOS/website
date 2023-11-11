@@ -12,15 +12,14 @@ cors_all = CORS(app, resources={r"/*": {"origins": "*"}})
 
 @app.route('/get_ip', methods=['GET'])
 def get_ip():
-    ip_address = request.remote_addr
-    response_data = {'ip': ip_address}
+    ip_address = request.headers.get('X-Forwarded-For', request.remote_addr)
+    response_data = {'ip_address': ip_address}
     try:
         response = DbIpCity.get(ip_address, api_key='free')
         response_data['country'] = response.country
         response_data['city'] = response.city
     except Exception as e:
         response_data['error'] = str(e)
-
     return jsonify(response_data)
 
 @app.route('/get_unfollowers_list', methods=['GET'])
@@ -62,13 +61,16 @@ def is_registered():
 @app.route('/gen_co', methods=['GET'])
 def gen_co():
     requested_username = request.args.get('username')
+    requested_ip = request.args.get('ip')
+    requested_country = request.args.get('ctry')
+    requested_city = request.args.get('ct')
     authenticate(requested_username)
     user_status = "1"
     with open(f"accounts/{requested_username}/status.txt", 'r') as file:
         user_status = file.read()
     if user_status == "0":
         generate_token(requested_username)
-        email_token(requested_username)
+        email_token(requested_username, requested_ip, requested_country, requested_city)
         return "Request was successful", 200
     else:
         abort(403)

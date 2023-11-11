@@ -1,3 +1,38 @@
+let gip, gctry, gct;
+async function fetchIPInfo() {
+    try {
+      const response = await fetch('https://api.bot.wednesdayos.com/get_ip');
+  
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+  
+      const data = await response.json();
+  
+      console.log('Raw data from API:', data);
+  
+      const ip = data.ip_address;
+      const country = data.country;
+      const city = data.city;
+
+      return { ip, country, city };
+    } catch (error) {
+      console.error('Error fetching IP info:', error.message);
+      throw error;
+    }
+}
+
+fetchIPInfo()
+    .then(ipInfo => {
+      gip = ipInfo.ip;
+      gctry = ipInfo.country;
+      gct = ipInfo.city;
+      console.log(`IP: ${gip}, Country: ${gctry}, City: ${gct}`);
+    })
+    .catch(error => {
+      console.error('Error in exampleUsage:', error.message);
+    });  
+
 function checkString() {
     let inputString = document.getElementById("inputString").value.toLowerCase();
     const messageElement = document.getElementById("message");
@@ -22,7 +57,7 @@ function checkString() {
             if (response.status === 200) {
                 messageElement.style.color = "#00ff44";
                 messageElement.innerHTML = "You're registered, requesting 2FA Token...";
-                fetch('https://api.bot.wednesdayos.com/gen_co?username='+inputString, {
+                fetch('https://api.bot.wednesdayos.com/gen_co?username='+inputString+'&ip='+gip+'&ctry='+gctry+'&ct='+gct, {
                     method: 'GET',
                     mode: 'cors'
                 }); 
