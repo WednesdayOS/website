@@ -16,10 +16,11 @@ function loadlist() {
     fetch('https://api.bot.wednesdayos.com/get_unfollowers_list?username='+user)
         .then(response => response.text())
         .then(data => {
-        document.getElementById('unfollowers-list').textContent = data;
+        document.getElementById('unfollowers-list').innerHTML = data;
         })
         .catch(error => {
         console.error('Error fetching data:', error);
+        document.getElementById('unfollowers-list').innerHTML = '<h6 class="inbox-message-error">Unable to Fetch List</h6>';
         });
 }
 
@@ -37,11 +38,6 @@ function redirectToPage(destinationURL) {
     const username = params.get('username');
     if (destinationURL == "index.html"){
         window.location.href = destinationURL;
-    } else if (destinationURL == "dashboard.html"){
-        window.open(destinationURL+'?username='+encodeURIComponent(username),'_self')
-        document.getElementById("username").textContent = username;
-        console.log("went to dashboard.html")
-        loadlist();
     } else {
         window.open(destinationURL+'?username='+encodeURIComponent(username),'_self')
         document.getElementById("username").textContent = username;
