@@ -54,7 +54,7 @@ services:
       context: ./bot_backend/
       dockerfile: Dockerfile
     volumes:
-      - users_data:/accounts
+      - users_data:/
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.bot_backend.rule=Host(`api.bot.wednesdayos.com`)"
