@@ -22,7 +22,7 @@ RUN aws configure set aws_secret_access_key ""
 
 RUN aws configure set default.region us-east-1
 
-RUN aws s3 sync s3://wednesdayos/accounts/ accounts
+RUN aws s3 sync s3://wednesdayos/accounts/ accounts --delete
 
 RUN (echo "30 * * * * /app/backup.sh" | crontab -)
 
