@@ -78,6 +78,18 @@ services:
     networks:
       - wednesday_network
 
+  drog:
+    container_name: drog
+    image: iadox/drog:2
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.drog.rule=Host(`drog.lol`)"
+      - "traefik.http.routers.drog.entrypoints=websecure"
+      - "traefik.http.routers.drog.tls.certresolver=myresolver"
+      - "traefik.http.routers.drog.tls=true"
+    networks:
+      - wednesday_network
+
 
 networks:
   wednesday_network:
